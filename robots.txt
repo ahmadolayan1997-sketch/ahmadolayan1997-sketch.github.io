@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nordicproapps.github.io/sitemap.xml
