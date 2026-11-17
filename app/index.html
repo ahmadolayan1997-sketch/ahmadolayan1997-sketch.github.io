@@ -1,6 +1,13 @@
-<title>CADstart</title>
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif;padding-top:env(safe-area-inset-top,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>CADstart – Learn AutoCAD 2D & 3D</title>
+<link rel="canonical" href="https://nordicproapps.github.io/app/">
+<link rel="icon" href="../icon.png">
 <meta name="description" content="CADstart – learn AutoCAD 2D and 3D from scratch: 30 lessons, quizzes, real AutoCAD screenshots, 200+ shortcuts and PDF downloads. Sign in with Google to continue on any device.">
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
 <style>
@@ -186,6 +193,33 @@ p{margin:0}
 .acctbtn{position:relative;display:grid;place-items:center;width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);margin-inline-end:8px;overflow:visible}.acctbtn svg{width:22px;height:22px}.acctbtn img{position:absolute;inset:0;width:100%;height:100%;border-radius:999px;object-fit:cover}.acctbtn i{position:absolute;right:-2px;bottom:-2px;width:11px;height:11px;border-radius:99px;background:#2fa36b;border:2px solid var(--paper)}
 .contcard{display:flex;align-items:center;gap:14px;margin:16px 0;padding:14px 16px;border-radius:16px;text-decoration:none;color:var(--ink);background:color-mix(in srgb,var(--accent) 10%,var(--paper));border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line))}.contcard .play{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:99px;background:var(--accent);color:var(--accent-ink);font-size:16px}.contcard small{display:block;color:var(--muted);margin-top:2px}.contcard .go{margin-inline-start:auto;font-weight:700;color:var(--accent)}
 .acctbox{padding:22px;border-radius:18px;border:1px solid var(--line);background:var(--paper);display:grid;gap:14px}.acctbox .who{display:flex;align-items:center;gap:12px}.acctbox .who img{width:46px;height:46px;border-radius:99px}.acctbox .gbtn{display:inline-flex;align-items:center;gap:10px;justify-content:center;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:#fff;color:#1f1f1f;font-weight:600;font-size:1rem;cursor:pointer}.acctbox .gbtn svg{width:20px;height:20px}.acctbox .danger{background:none;border:1px solid #c0392b;color:#c0392b;padding:10px 14px;border-radius:12px;font-weight:600;cursor:pointer}.acctbox .danger.sure{background:#c0392b;color:#fff}.acctbox .ok{color:#2fa36b;font-weight:600}.acctbox .muted a{color:inherit}
+/* Welcome screen: shown when the app opens and the learner is not signed in */
+.welcome{position:fixed;inset:0;z-index:55;overflow-y:auto;background:var(--bg);display:flex;flex-direction:column;animation:welIn .35s ease both}
+@keyframes welIn{from{opacity:0}to{opacity:1}}
+.welcome.out{animation:welOut .25s ease both}@keyframes welOut{to{opacity:0;transform:translateY(8px)}}
+.wtop{position:relative;overflow:hidden;color:#fff;padding:calc(18px + env(safe-area-inset-top,0px)) 20px 34px;background:linear-gradient(135deg,var(--hero-a) 0%,var(--hero-b) 55%,var(--hero-c) 100%);border-radius:0 0 28px 28px}
+.wtop::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(160deg,transparent 25%,#000 100%);-webkit-mask-image:linear-gradient(160deg,transparent 25%,#000 100%);pointer-events:none}
+.wtop>*{position:relative;z-index:1}
+.wtop .cube{position:absolute;inset-inline-end:-22px;bottom:-30px;width:170px;height:170px;opacity:.2;z-index:0}
+.wlangs{display:flex;gap:6px;justify-content:flex-end;margin-bottom:26px}
+.wlangs button{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:6px 11px;font:600 .8rem/1 var(--f-body);cursor:pointer}
+.wlangs button[aria-pressed="true"]{background:#fff;color:var(--hero-b);border-color:#fff}
+.wlogo{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);margin-bottom:16px}
+.wlogo svg{width:40px;height:40px}
+.wtop h1{font:700 clamp(1.6rem,6vw,2.1rem)/1.15 var(--f-display);margin:0 0 8px}
+.wtop p{margin:0;max-width:40ch;color:rgba(255,255,255,.9)}
+.wbody{width:100%;max-width:480px;margin:0 auto;padding:22px 18px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;flex:1}
+.wlist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.wlist li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:var(--paper);border:1px solid var(--line)}
+.wlist .ic{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:color-mix(in srgb,var(--accent) 14%,var(--paper));color:var(--accent);font-size:15px}
+.wgbtn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:52px;padding:12px 18px;border-radius:14px;border:1px solid #dadce0;background:#fff;color:#1f1f1f;font:600 1.02rem/1.2 var(--f-body);cursor:pointer;box-shadow:0 6px 18px -10px rgba(0,0,0,.35);margin-top:6px}
+.wgbtn svg{width:22px;height:22px;flex:none}.wgbtn:disabled{opacity:.7;cursor:progress}
+.wskip{width:100%;min-height:48px;border-radius:14px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 .98rem/1.2 var(--f-body);cursor:pointer}
+.wnote{font-size:.86rem;color:var(--muted);text-align:center;margin:2px 0 0}.wnote a{color:inherit}
+.wmsg{min-height:1.2em;font-size:.9rem;color:var(--bad);text-align:center;margin:0}
+.spin{width:18px;height:18px;border-radius:50%;border:2.5px solid #c7c7c7;border-top-color:#1a73e8;animation:spin .8s linear infinite;flex:none}@keyframes spin{to{transform:rotate(360deg)}}
+.synccard{display:flex;align-items:center;gap:14px;margin:0 0 16px;padding:12px 16px;border-radius:16px;text-decoration:none;color:var(--ink);background:var(--paper);border:1px dashed color-mix(in srgb,var(--accent) 45%,var(--line))}.synccard .ic{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:color-mix(in srgb,var(--accent) 14%,var(--paper));font-size:18px}.synccard small{display:block;color:var(--muted)}.synccard .go{margin-inline-start:auto;font-weight:700;color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.welcome,.welcome.out,.spin{animation:none}}
 .sccard{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:18px;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid color-mix(in srgb,var(--m2) 30%,var(--line));box-shadow:0 14px 34px -24px color-mix(in srgb,var(--m2) 80%,transparent)}
 .sccard .kb{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--m2),var(--m1));color:#fff;font:700 .95rem/1 var(--f-mono);direction:ltr}
 .sccard strong{display:block;font-family:var(--f-display);font-size:1.08rem}
@@ -239,6 +273,8 @@ footer{padding-block:24px;border-top:1px solid var(--line);font-size:.82rem;colo
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
 </style>
 
+</head>
+<body>
 <header class="top"><div class="wrap">
   <a class="brand" href="#" aria-label="CADstart">
     <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="8" fill="var(--accent)"/><path d="M15 6.5 22.4 10.8 15 15.1 7.6 10.8Z" fill="var(--mark)" opacity=".9"/><path d="M15 6.5 22.4 10.8V19.2L15 23.5 7.6 19.2V10.8ZM7.6 10.8 15 15.1 22.4 10.8M15 15.1V23.5" fill="none" stroke="var(--accent-ink)" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></svg>
@@ -922,7 +958,7 @@ const UI={
   backLesson:"Tillbaka till lektionen",done:"Klar",open:"Öppen",ad:"Annons",
   pdfMade:"PDF:en är sparad.",pdfNo:"PDF-nedladdning fungerar inte i den här vyn.",pdfDecl:"Nedladdningen avbröts.",
   quizTitle:"Quiz",answers:"Facit",figure:"Bild",shotTag:"Riktig skärmbild från AutoCAD 2026",shotZoom:"Tryck på bilden för att förstora",foot:"CADstart är en fristående kurs och är inte knuten till Autodesk. AutoCAD är ett varumärke som tillhör Autodesk, Inc.",
-  mod:"Del",scTitle:"AutoCAD-genvägar",scSub:"{n} kommandon och tangenter, ordnade från 2D till 3D. Kortaste genvägen först i varje grupp.",scCard:"Alla kommandon och genvägar på ett ställe",scOpen:"Öppna listan",scSearch:"Sök kommando, genväg eller ord …",scNone:"Inget kommando matchar sökningen.",scCount:"{n} kommandon",scNoAlias:"Inget alias – skriv hela namnet",cont:"Fortsätt där du slutade",acct:"Konto",acctTitle:"Ditt konto",acctIntro:"Logga in med ditt Google-konto för att spara dina framsteg i molnet och fortsätta på en annan mobil eller på datorn. Utan inloggning sparas framstegen ändå på den här enheten.",signIn:"Logga in med Google",signOut:"Logga ut",shareLink:"Skicka länken till datorn",adPrivacy:"Integritetsval för annonser",signedAs:"Inloggad som",synced:"Framstegen är synkade",syncing:"Synkar …",acctErr:"Inloggningen misslyckades. Kontrollera internet och försök igen.",acctNA:"Inloggning finns i appen och på webbsidan.",acctWeb:"Fortsätt på datorn:",del:"Radera mitt konto och mina data",delSure:"Ja, radera för alltid",delInfo:"Kontot och alla framsteg i molnet raderas. Det går inte att ångra. Framstegen på den här enheten finns kvar.",deleted:"Ditt konto och dina data i molnet är raderade.",privacy:"Integritetspolicy"},
+  mod:"Del",scTitle:"AutoCAD-genvägar",scSub:"{n} kommandon och tangenter, ordnade från 2D till 3D. Kortaste genvägen först i varje grupp.",scCard:"Alla kommandon och genvägar på ett ställe",scOpen:"Öppna listan",scSearch:"Sök kommando, genväg eller ord …",scNone:"Inget kommando matchar sökningen.",scCount:"{n} kommandon",scNoAlias:"Inget alias – skriv hela namnet",cont:"Fortsätt där du slutade",acct:"Konto",acctTitle:"Ditt konto",acctIntro:"Logga in med ditt Google-konto för att spara dina framsteg i molnet och fortsätta på en annan mobil eller på datorn. Utan inloggning sparas framstegen ändå på den här enheten.",signIn:"Logga in med Google",signOut:"Logga ut",shareLink:"Skicka länken till datorn",adPrivacy:"Integritetsval för annonser",signedAs:"Inloggad som",synced:"Framstegen är synkade",syncing:"Synkar …",acctErr:"Inloggningen misslyckades. Kontrollera internet och försök igen.",acctNA:"Inloggning finns i appen och på webbsidan.",acctWeb:"Fortsätt på datorn:",del:"Radera mitt konto och mina data",delSure:"Ja, radera för alltid",delInfo:"Kontot och alla framsteg i molnet raderas. Det går inte att ångra. Framstegen på den här enheten finns kvar.",deleted:"Ditt konto och dina data i molnet är raderade.",privacy:"Integritetspolicy",welTitle:"Välkommen till CADstart",welSub:"Lär dig AutoCAD 2D och 3D steg för steg – från ditt första klick till färdiga 3D-modeller.",welB1:"Fortsätt där du slutade – på mobilen och på datorn",welB2:"Dina quizresultat och upplåsta lektioner sparas säkert",welB3:"Gratis. Vi säljer eller delar aldrig dina uppgifter",welSkip:"Fortsätt utan att logga in",welNote:"Utan inloggning sparas framstegen bara på den här enheten. Du kan logga in senare under Konto.",welWait:"Loggar in …",welHi:"Välkommen, {name}! Dina framsteg sparas nu.",welNet:"Ingen internetanslutning. Försök igen eller fortsätt utan att logga in.",syncCard:"Spara dina framsteg i molnet",syncCardSub:"Logga in med Google och fortsätt på datorn",rate:"Betygsätt CADstart",rateTxt:"Gillar du appen? Ett betyg hjälper andra att hitta den."},
  en:{tag:"Learn AutoCAD 2D and 3D from scratch",intro:"30 in-depth lessons that take you from your first click to finished 3D models. Each lesson has explanations, figures, common mistakes, several exercises and a 10-question quiz. Pass the quiz to unlock the next lesson.",
   progress:"Your progress",lessonsDone:"lessons completed",lesson:"Lesson",all:"All lessons",pdf:"Download PDF",quiz:"Take quiz",
   practice:"Exercise",tip:"Tip",cmds:"Commands in this lesson",next:"Next lesson",prev:"Previous",soon:"Coming soon",
@@ -932,7 +968,7 @@ const UI={
   backLesson:"Back to the lesson",done:"Done",open:"Open",ad:"Advertisement",
   pdfMade:"The PDF has been saved.",pdfNo:"PDF download isn't available in this view.",pdfDecl:"The download was cancelled.",
   quizTitle:"Quiz",answers:"Answer key",figure:"Figure",shotTag:"Real screenshot from AutoCAD 2026",shotZoom:"Tap the image to enlarge",foot:"CADstart is an independent course and is not affiliated with Autodesk. AutoCAD is a trademark of Autodesk, Inc.",
-  mod:"Part",scTitle:"AutoCAD shortcuts",scSub:"{n} commands and keys, ordered from 2D to 3D. Shortest shortcut first in each group.",scCard:"Every command and shortcut in one place",scOpen:"Open the list",scSearch:"Search command, shortcut or word …",scNone:"No command matches your search.",scCount:"{n} commands",scNoAlias:"No alias – type the full name",cont:"Continue where you left off",acct:"Account",acctTitle:"Your account",acctIntro:"Sign in with your Google account to save your progress in the cloud and continue on another phone or on your computer. Without signing in, your progress is still saved on this device.",signIn:"Sign in with Google",signOut:"Sign out",shareLink:"Send the link to your computer",adPrivacy:"Ad privacy choices",signedAs:"Signed in as",synced:"Progress synced",syncing:"Syncing …",acctErr:"Sign-in failed. Check your internet connection and try again.",acctNA:"Sign-in is available in the app and on the website.",acctWeb:"Continue on your computer:",del:"Delete my account and data",delSure:"Yes, delete forever",delInfo:"Your account and all progress saved in the cloud will be deleted. This cannot be undone. Progress on this device is kept.",deleted:"Your account and cloud data have been deleted.",privacy:"Privacy policy"},
+  mod:"Part",scTitle:"AutoCAD shortcuts",scSub:"{n} commands and keys, ordered from 2D to 3D. Shortest shortcut first in each group.",scCard:"Every command and shortcut in one place",scOpen:"Open the list",scSearch:"Search command, shortcut or word …",scNone:"No command matches your search.",scCount:"{n} commands",scNoAlias:"No alias – type the full name",cont:"Continue where you left off",acct:"Account",acctTitle:"Your account",acctIntro:"Sign in with your Google account to save your progress in the cloud and continue on another phone or on your computer. Without signing in, your progress is still saved on this device.",signIn:"Sign in with Google",signOut:"Sign out",shareLink:"Send the link to your computer",adPrivacy:"Ad privacy choices",signedAs:"Signed in as",synced:"Progress synced",syncing:"Syncing …",acctErr:"Sign-in failed. Check your internet connection and try again.",acctNA:"Sign-in is available in the app and on the website.",acctWeb:"Continue on your computer:",del:"Delete my account and data",delSure:"Yes, delete forever",delInfo:"Your account and all progress saved in the cloud will be deleted. This cannot be undone. Progress on this device is kept.",deleted:"Your account and cloud data have been deleted.",privacy:"Privacy policy",welTitle:"Welcome to CADstart",welSub:"Learn AutoCAD 2D and 3D step by step – from your first click to finished 3D models.",welB1:"Continue where you left off – on your phone and your computer",welB2:"Your quiz results and unlocked lessons are saved securely",welB3:"Free. We never sell or share your data",welSkip:"Continue without signing in",welNote:"Without signing in, your progress is only saved on this device. You can sign in later under Account.",welWait:"Signing in …",welHi:"Welcome, {name}! Your progress is now saved.",welNet:"No internet connection. Try again or continue without signing in.",syncCard:"Save your progress in the cloud",syncCardSub:"Sign in with Google and continue on your computer",rate:"Rate CADstart",rateTxt:"Enjoying the app? A rating helps others find it."},
  ar:{tag:"تعلّم AutoCAD ثنائي وثلاثي الأبعاد من البداية",intro:"30 درسًا معمّقًا تأخذك من أول نقرة إلى نماذج ثلاثية الأبعاد كاملة. في كل درس شرح وصور وأخطاء شائعة وعدة تمارين واختبار من 10 أسئلة. اجتز الاختبار لفتح الدرس التالي.",
   progress:"تقدّمك",lessonsDone:"دروس مكتملة",lesson:"الدرس",all:"كل الدروس",pdf:"تنزيل PDF",quiz:"ابدأ الاختبار",
   practice:"تمرين",tip:"نصيحة",cmds:"أوامر هذا الدرس",next:"الدرس التالي",prev:"السابق",soon:"قريبًا",
@@ -942,7 +978,7 @@ const UI={
   backLesson:"العودة إلى الدرس",done:"مكتمل",open:"مفتوح",ad:"إعلان",
   pdfMade:"تم حفظ ملف PDF.",pdfNo:"تنزيل PDF غير متاح في هذا العرض.",pdfDecl:"تم إلغاء التنزيل.",
   quizTitle:"الاختبار",answers:"الإجابات",figure:"الشكل",shotTag:"لقطة شاشة حقيقية من AutoCAD 2026",shotZoom:"انقر على الصورة لتكبيرها",foot:"CADstart دورة مستقلة وليست تابعة لشركة Autodesk. ‏AutoCAD علامة تجارية مملوكة لشركة Autodesk, Inc.",
-  mod:"الجزء",scTitle:"اختصارات AutoCAD",scSub:"{n} أمرًا ومفتاحًا، مرتبة من الثنائي إلى الثلاثي الأبعاد. أقصر اختصار أولًا في كل مجموعة.",scCard:"كل الأوامر والاختصارات في مكان واحد",scOpen:"افتح القائمة",scSearch:"ابحث عن أمر أو اختصار أو كلمة …",scNone:"لا يوجد أمر يطابق البحث.",scCount:"{n} أمرًا",scNoAlias:"لا يوجد اختصار – اكتب الاسم كاملًا",cont:"تابع من حيث توقفت",acct:"الحساب",acctTitle:"حسابك",acctIntro:"سجّل الدخول بحساب Google لحفظ تقدّمك في السحابة ومتابعة الدراسة على هاتف آخر أو على الكمبيوتر. بدون تسجيل الدخول يبقى تقدّمك محفوظًا على هذا الجهاز.",signIn:"تسجيل الدخول بحساب Google",signOut:"تسجيل الخروج",shareLink:"أرسل الرابط إلى الكمبيوتر",adPrivacy:"خيارات الخصوصية للإعلانات",signedAs:"مسجّل باسم",synced:"تمت مزامنة التقدّم",syncing:"جارٍ المزامنة …",acctErr:"فشل تسجيل الدخول. تحقّق من الإنترنت وحاول مرة أخرى.",acctNA:"تسجيل الدخول متاح في التطبيق وعلى الموقع.",acctWeb:"تابع على الكمبيوتر:",del:"احذف حسابي وبياناتي",delSure:"نعم، احذف نهائيًا",delInfo:"سيتم حذف حسابك وكل التقدّم المحفوظ في السحابة. لا يمكن التراجع عن ذلك. يبقى التقدّم على هذا الجهاز.",deleted:"تم حذف حسابك وبياناتك من السحابة.",privacy:"سياسة الخصوصية"}
+  mod:"الجزء",scTitle:"اختصارات AutoCAD",scSub:"{n} أمرًا ومفتاحًا، مرتبة من الثنائي إلى الثلاثي الأبعاد. أقصر اختصار أولًا في كل مجموعة.",scCard:"كل الأوامر والاختصارات في مكان واحد",scOpen:"افتح القائمة",scSearch:"ابحث عن أمر أو اختصار أو كلمة …",scNone:"لا يوجد أمر يطابق البحث.",scCount:"{n} أمرًا",scNoAlias:"لا يوجد اختصار – اكتب الاسم كاملًا",cont:"تابع من حيث توقفت",acct:"الحساب",acctTitle:"حسابك",acctIntro:"سجّل الدخول بحساب Google لحفظ تقدّمك في السحابة ومتابعة الدراسة على هاتف آخر أو على الكمبيوتر. بدون تسجيل الدخول يبقى تقدّمك محفوظًا على هذا الجهاز.",signIn:"تسجيل الدخول بحساب Google",signOut:"تسجيل الخروج",shareLink:"أرسل الرابط إلى الكمبيوتر",adPrivacy:"خيارات الخصوصية للإعلانات",signedAs:"مسجّل باسم",synced:"تمت مزامنة التقدّم",syncing:"جارٍ المزامنة …",acctErr:"فشل تسجيل الدخول. تحقّق من الإنترنت وحاول مرة أخرى.",acctNA:"تسجيل الدخول متاح في التطبيق وعلى الموقع.",acctWeb:"تابع على الكمبيوتر:",del:"احذف حسابي وبياناتي",delSure:"نعم، احذف نهائيًا",delInfo:"سيتم حذف حسابك وكل التقدّم المحفوظ في السحابة. لا يمكن التراجع عن ذلك. يبقى التقدّم على هذا الجهاز.",deleted:"تم حذف حسابك وبياناتك من السحابة.",privacy:"سياسة الخصوصية",welTitle:"مرحبًا بك في CADstart",welSub:"تعلّم أوتوكاد ثنائي وثلاثي الأبعاد خطوة بخطوة – من أول نقرة حتى نماذج ثلاثية الأبعاد كاملة.",welB1:"تابع من حيث توقفت – على الهاتف والكمبيوتر",welB2:"تُحفظ نتائج اختباراتك والدروس المفتوحة بأمان",welB3:"مجاني. لا نبيع بياناتك ولا نشاركها أبدًا",welSkip:"المتابعة بدون تسجيل الدخول",welNote:"بدون تسجيل الدخول يُحفظ تقدّمك على هذا الجهاز فقط. يمكنك تسجيل الدخول لاحقًا من صفحة الحساب.",welWait:"جارٍ تسجيل الدخول …",welHi:"مرحبًا {name}! يتم الآن حفظ تقدّمك.",welNet:"لا يوجد اتصال بالإنترنت. حاول مرة أخرى أو تابع بدون تسجيل الدخول.",syncCard:"احفظ تقدّمك في السحابة",syncCardSub:"سجّل الدخول بحساب Google وتابع على الكمبيوتر",rate:"قيّم CADstart",rateTxt:"هل أعجبك التطبيق؟ تقييمك يساعد الآخرين على إيجاده."}
 };
 const LANGS={en:{flag:"🇬🇧",code:"EN",dir:"ltr"},sv:{flag:"🇸🇪",code:"SV",dir:"ltr"},ar:{flag:"🇸🇦",code:"AR",dir:"rtl"}};
 
@@ -5728,7 +5764,7 @@ async function fbLoad(){
  const fapp=A.initializeApp(FB_CONFIG);
  const auth=NATIVE?AU.initializeAuth(fapp,{persistence:AU.indexedDBLocalPersistence}):AU.getAuth(fapp);
  FB={A,AU,FS,auth,db:FS.getFirestore(fapp)};
- AU.onAuthStateChanged(auth,u=>{USER=u;acctBadge();if(u)syncPull().then(()=>{if(/^#?(account)?$/.test(location.hash)||location.hash==="")route();});else if(location.hash==="#account")route();});
+ AU.onAuthStateChanged(auth,u=>{USER=u;try{if(u)localStorage.setItem("cad.acct","1");else localStorage.removeItem("cad.acct");}catch(e){}if(u&&document.getElementById("welcome"))closeWelcome("signed");acctBadge();if(u)syncPull().then(()=>{if(/^#?(account)?$/.test(location.hash)||location.hash==="")route();});else if(location.hash==="#account")route();});
  return FB;
 }
 function acctBadge(){
@@ -5801,9 +5837,10 @@ function account(){
   <div><button class="btn" id="acct-out" type="button">${U("signOut")}</button></div>
   <hr style="border:0;border-top:1px solid var(--line);width:100%">
   <p class="muted">${U("delInfo")}</p><div><button class="danger" id="acct-del" type="button">${U("del")}</button></div><p class="muted" id="acct-msg"></p>`;
- const adp=NATIVE?`<div><button class="btn" id="acct-ads" type="button">${U("adPrivacy")}</button></div>`:"";
+ const adp=NATIVE?`<div><button class="btn" id="acct-ads" type="button">${U("adPrivacy")}</button></div><p class="muted">${U("rateTxt")}</p><div><button class="btn ghost" id="acct-rate" type="button">★ ${U("rate")}</button></div>`:"";
  app.innerHTML=`${crumbs}<article class="sheet"><header class="lhead"><span class="eyebrow">CADstart</span><h1>${U("acctTitle")}</h1></header><div class="acctbox">${box}${adp}<p class="muted"><a href="${PRIVACY_URL}">${U("privacy")}</a></p></div></article>`;
  const ba=document.getElementById("acct-ads");if(ba)ba.onclick=async()=>{try{const A=plug("AdMob");await A.requestConsentInfo();await A.showPrivacyOptionsForm();}catch(e){console.warn(e);toast(U("acctErr"));}};
+ const br=document.getElementById("acct-rate");if(br)br.onclick=rateOpenStore;
  const msg=t=>{const m=document.getElementById("acct-msg");if(m)m.textContent=t;};
  const bi=document.getElementById("acct-in");if(bi)bi.onclick=async()=>{bi.disabled=true;msg(U("syncing"));try{await signIn();}catch(e){console.warn(e);const d=(e&&(e.code||e.errorMessage||e.message))||String(e);msg(U("acctErr")+" ["+String(d).slice(0,160)+"]");}bi.disabled=false;};
  const bs=document.getElementById("acct-share");if(bs)bs.onclick=()=>{try{plug("Share").share({title:"CADstart",text:U("acctWeb"),url:WEB_URL,dialogTitle:U("shareLink")});}catch(e){}};
@@ -5817,6 +5854,76 @@ function initAccount(){
  acctBadge();
  fbLoad().catch(e=>{console.warn("firebase",e);const b=document.getElementById("acct-btn");if(b)b.hidden=true;});
 }
+
+/* ======================= WELCOME SCREEN =======================
+   When the app opens and the learner is not signed in, a welcome screen offers
+   "Sign in with Google" or "Continue without signing in".
+   It is shown on first start, and again at most every 14 days while not signed in.
+   cad.acct = "1" while a Google account is signed in on this device. */
+const WEL_KEY="cad.welcome",WEL_DAYS=14;
+let welcomeResolve;const WELCOME_DONE=new Promise(r=>welcomeResolve=r);
+const hadAccount=()=>{try{return localStorage.getItem("cad.acct")==="1"}catch(e){return false}};
+function welcomeNeeded(){
+ if(!acctAvailable()||USER||hadAccount())return false;
+ if(/[?&]welcome=1\b/.test(location.search))return true;
+ let t=0;try{t=+localStorage.getItem(WEL_KEY)||0}catch(e){}
+ return !t||Date.now()-t>WEL_DAYS*864e5;
+}
+const isCancel=e=>/cancel|popup-closed|12501|user-cancelled/i.test(String((e&&(e.code||e.message||e.errorMessage))||e));
+function closeWelcome(why){
+ const w=document.getElementById("welcome");if(!w)return;
+ if(why!=="signed")try{localStorage.setItem(WEL_KEY,String(Date.now()))}catch(e){}
+ w.classList.add("out");setTimeout(()=>{w.remove();document.documentElement.style.overflow="";welcomeResolve();},230);
+ route();
+}
+function renderWelcome(){
+ let w=document.getElementById("welcome");
+ if(!w){w=document.createElement("div");w.id="welcome";w.className="welcome";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");w.setAttribute("aria-labelledby","wel-h");document.body.appendChild(w);document.documentElement.style.overflow="hidden";}
+ w.lang=lang;w.dir=LANGS[lang].dir;
+ const langs=Object.keys(LANGS).map(k=>`<button type="button" data-l="${k}" aria-pressed="${k===lang}">${LANGS[k].flag} ${LANGS[k].code}</button>`).join("");
+ w.innerHTML=`<div class="wtop">${CUBE}<div class="wlangs">${langs}</div><div class="wlogo">${CUBE.replace('class="cube"','class="wl"')}</div><h1 id="wel-h">${U("welTitle")}</h1><p>${U("welSub")}</p></div>
+ <div class="wbody">
+  <ul class="wlist"><li><span class="ic">▶</span><span>${U("welB1")}</span></li><li><span class="ic">✓</span><span>${U("welB2")}</span></li><li><span class="ic">🔒</span><span>${U("welB3")}</span></li></ul>
+  <button class="wgbtn" id="wel-in" type="button">${GLOGO}<span>${U("signIn")}</span></button>
+  <p class="wmsg" id="wel-msg" role="status"></p>
+  <button class="wskip" id="wel-skip" type="button">${U("welSkip")}</button>
+  <p class="wnote">${U("welNote")} · <a href="${PRIVACY_URL}" target="_blank" rel="noopener">${U("privacy")}</a></p>
+ </div>`;
+ w.querySelectorAll(".wlangs button").forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem("cad.lang3",lang)}catch(e){}route();renderWelcome();});
+ w.querySelector("#wel-skip").onclick=()=>closeWelcome("skip");
+ const bi=w.querySelector("#wel-in"),msg=w.querySelector("#wel-msg");
+ bi.onclick=async()=>{
+  if(navigator.onLine===false){msg.textContent=U("welNet");return;}
+  bi.disabled=true;bi.innerHTML=`<span class="spin" aria-hidden="true"></span><span>${U("welWait")}</span>`;msg.textContent="";
+  try{
+   await signIn();
+   const name=((FB&&FB.auth.currentUser&&FB.auth.currentUser.displayName)||"").split(" ")[0];
+   closeWelcome("signed");toast(fill(U("welHi"),{name:name||"👋"}));
+  }catch(e){
+   console.warn("welcome sign-in",e);
+   if(!document.getElementById("welcome"))return;
+   bi.disabled=false;bi.innerHTML=`${GLOGO}<span>${U("signIn")}</span>`;
+   if(!isCancel(e))msg.textContent=navigator.onLine===false?U("welNet"):U("acctErr");
+  }
+ };
+ if(matchMedia("(pointer:fine)").matches)setTimeout(()=>bi.focus({preventScroll:true}),50);
+}
+function maybeWelcome(){if(welcomeNeeded())renderWelcome();else welcomeResolve();}
+
+/* ======================= RATING (Google Play In-App Review) =======================
+   Google's own rating dialog, shown inside the app at a natural break:
+   when the learner comes back to the start page after passing 3, 8, 15 or 25 lessons.
+   At most once every 30 days. Google decides whether the dialog is actually shown. */
+const RATE_AT=[3,8,15,25];
+function rateMark(){const d=L.filter(l=>passed(l.n)).length;if(RATE_AT.includes(d))try{localStorage.setItem("cad.rateDue","1")}catch(e){}}
+function rateMaybe(){
+ if(!NATIVE)return;
+ let due=false,last=0;try{due=localStorage.getItem("cad.rateDue")==="1";last=+localStorage.getItem("cad.rateAt")||0;}catch(e){}
+ if(!due||Date.now()-last<30*864e5||document.getElementById("welcome"))return;
+ try{localStorage.removeItem("cad.rateDue");localStorage.setItem("cad.rateAt",String(Date.now()));}catch(e){}
+ setTimeout(()=>{try{plug("AppReview").requestReview().catch(e=>console.warn("review",e));}catch(e){}},1500);
+}
+function rateOpenStore(){try{plug("AppReview").openAppStore().catch(()=>{});}catch(e){}}
 
 /* ======================= VIEWS ======================= */
 function ad(){/* Ad slot: replace with AdMob/AdSense code in the production app */return `<div class="ad" aria-label="${U("ad")}">${U("ad")}</div>`}
@@ -5834,6 +5941,7 @@ function home(){
  let h=`<section class="hero">${CUBE}<span class="eyebrow">AutoCAD 2D · 3D</span><h1>${U("tag")}</h1><p>${U("intro")}</p>
  <div class="progress"><div class="row"><strong>${U("progress")}</strong><span>${done} / 30 ${U("lessonsDone")}</span></div><div class="bar"><i style="width:${done/30*100}%"></i></div></div></section>
  ${contCard(sc)}
+ ${acctAvailable()&&!USER&&!hadAccount()?`<a class="synccard" href="#account"><span class="ic">☁</span><span><strong>${U("syncCard")}</strong><small>${U("syncCardSub")}</small></span><span class="go">${arrow("next")}</span></a>`:""}
  ${ad()}
  <a class="sccard" href="#shortcuts"><span class="kb">Ctrl</span><span><strong>${U("scTitle")}</strong><small>${U("scCard")} · ${fill(U("scCount"),{n:SC_TOTAL})}</small></span><span class="go">${U("scOpen")} ${arrow("next")}</span></a>`;
  for(const m of MODULES){
@@ -5983,6 +6091,7 @@ function quiz(n){
    ex.innerHTML=ok?`<b>${U("correct")}</b> ${esc(T(q.ex))}`:`<b>${U("wrongA")}</b> ${esc(T(q.o)[q.a])}. ${esc(T(q.ex))}`;
   });
   saveScore(n,s);
+  if(s>=need(l))rateMark();
   document.getElementById("qmsg").textContent="";
   document.getElementById("qsubmit").hidden=true;
   const res=document.getElementById("qres");res.hidden=false;
@@ -6137,10 +6246,11 @@ let AdMob=null,interReady=false;
 async function initNative(){
  if(!NATIVE)return;
  document.documentElement.classList.add("native");
- try{const App=plug("App");App.addListener("backButton",()=>{if(location.hash&&location.hash!=="#")history.back();else App.exitApp();});}catch(e){}
+ try{const App=plug("App");App.addListener("backButton",()=>{if(document.getElementById("welcome")){closeWelcome("skip");return;}if(location.hash&&location.hash!=="#")history.back();else App.exitApp();});}catch(e){}
  try{
   AdMob=plug("AdMob");await AdMob.initialize({});
   try{const c=await AdMob.requestConsentInfo();window.__privacyReq=c&&c.privacyOptionsRequirementStatus==="REQUIRED";if(c.isConsentFormAvailable&&c.status==="REQUIRED")await AdMob.showConsentForm();}catch(e){}
+  await WELCOME_DONE;
   await AdMob.showBanner({adId:ADS.banner,adSize:"ADAPTIVE_BANNER",position:"BOTTOM_CENTER",margin:0,isTesting:ADS.testing});
   prepInter();
  }catch(e){console.warn("AdMob",e);}
@@ -6202,7 +6312,7 @@ function route(){
  else if((m=h.match(/^quiz-(\d+)$/)))quiz(+m[1]);
  else if(h==="shortcuts")shortcuts();
  else if(h==="account")account();
- else home();
+ else{home();rateMaybe();}
  if((m=h.match(/^lektion-(\d+)$/))&&L[+m[1]-1]&&ready(L[+m[1]-1])&&unlocked(+m[1])){const o=loadLast();if(!o||o.n!==+m[1])markLast(+m[1],0);}
  acctBadge();
  document.documentElement.lang=lang;
@@ -6230,6 +6340,10 @@ document.addEventListener("click",e=>{
  const d=document.createElement("div");d.className="lightbox";d.setAttribute("role","dialog");
  d.innerHTML=`<img src="${b.querySelector("img").src}" alt="">`;document.body.appendChild(d);});
 route();
+maybeWelcome();
 initNative();
 initAccount();
 </script>
+
+</body>
+</html>
