@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bli testare – CADstart</title>
+<meta name="description" content="Bli testare av CADstart – appen som lär dig AutoCAD 2D och 3D. Tre enkla steg.">
+<meta property="og:title" content="Bli testare av CADstart">
+<meta property="og:description" content="Hjälp till att testa appen som lär dig AutoCAD 2D och 3D. Tre enkla steg.">
+<meta property="og:image" content="https://nordicproapps.github.io/icon.png">
+<link rel="icon" href="../icon.png">
+<style>
+:root{--ink:#1d2730;--muted:#5b6872;--line:#d9e1e6;--bg:#f3f6f8;--card:#fff;--acc:#2a6db0;--acc2:#7b4fb3;--ok:#1f8a5b;--warn:#b5651d}
+@media (prefers-color-scheme:dark){:root{--ink:#e8eef2;--muted:#a3b0b9;--line:#2c3a44;--bg:#11181d;--card:#19232a;--acc:#6aa8ea;--acc2:#a986dc;--ok:#4cc38a;--warn:#e8a15a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Arabic",Tahoma,sans-serif}
+main{max-width:560px;margin:0 auto;padding:0 16px 48px}
+.top{background:linear-gradient(135deg,#2d6aa6,#6f4fb0 60%,#b14d7a);color:#fff;padding:22px 20px 26px;border-radius:0 0 24px 24px;margin:0 -16px 18px}
+.langs{display:flex;gap:6px;justify-content:flex-end;margin-bottom:14px}
+.langs button{border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:5px 11px;font:600 .82rem/1 inherit;cursor:pointer}
+.langs button[aria-pressed="true"]{background:#fff;color:#4b3c8f}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:52px;height:52px;border-radius:14px;background:#fff}
+h1{font-size:1.55rem;line-height:1.2;margin:0}
+.top p{margin:10px 0 0;color:rgba(255,255,255,.92)}
+.need{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.need span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.9rem}
+.warn{display:none;background:#fff4e5;color:#6b3d0e;border:1px solid #f0c48f;border-radius:14px;padding:14px;margin:0 0 16px}
+@media (prefers-color-scheme:dark){.warn{background:#3a2a17;color:#f6d7ae;border-color:#6b4a22}}
+.warn.show{display:block}
+.warn a{display:block;margin-top:10px;text-align:center;background:var(--warn);color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:12px}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.step h2{display:flex;align-items:center;gap:10px;font-size:1.1rem;margin:0 0 6px}
+.num{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;font-weight:700;font-size:.95rem}
+.step p{margin:0 0 12px;color:var(--muted)}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:700;border-radius:14px;padding:14px;background:var(--acc);color:#fff}
+.btn.alt{background:var(--acc2)}.btn.ok{background:var(--ok)}
+.done{margin-top:10px;font-size:.9rem;color:var(--muted)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-top:12px}
+summary{font-weight:700;cursor:pointer}
+details p{margin:8px 0 0;color:var(--muted)}
+.thanks{text-align:center;margin:22px 0 0;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:26px}
+footer a{color:inherit}
+[dir=rtl] .langs{justify-content:flex-start}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+const GROUP="https://groups.google.com/g/cadstart-testers";
+const OPTIN="https://play.google.com/apps/testing/se.cadstart.app";
+const STORE="https://play.google.com/store/apps/details?id=se.cadstart.app";
+const ua=navigator.userAgent||"";
+const android=/Android/i.test(ua);
+const inApp=/WhatsApp|FBAN|FBAV|FB_IAB|Instagram|Messenger|Line\/|Snapchat|TikTok|; wv\)/i.test(ua);
+// On Android, open a link straight in Chrome (works even from inside WhatsApp)
+function chrome(u){if(!android)return u;const x=new URL(u);return "intent://"+x.host+x.pathname+x.search+"#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url="+encodeURIComponent(u)+";end";}
+const T={
+sv:{dir:"ltr",title:"Bli testare av CADstart",intro:"Tack för att du hjälper till! CADstart är en gratis app som lär dig AutoCAD 2D och 3D. Det tar ungefär 2 minuter.",
+need:["📱 Android-telefon","👤 Ditt Google-konto (samma som i Play Butik)"],
+warn:"Du har öppnat sidan i WhatsApp (eller en annan app). Där är du inte inloggad på Google, och då fungerar inte stegen. Öppna sidan i Chrome först:",warnBtn:"Öppna i Chrome",
+s1:"Gå med i testgruppen",s1p:"Logga in med ditt Google-konto om du blir tillfrågad. Tryck sedan på ”Gå med i gruppen” (Join group).",s1b:"Gå med i gruppen",
+s2:"Bli testare",s2p:"Tryck på ”Bli testare” (Become a tester). Använd samma Google-konto som i steg 1.",s2b:"Bli testare",
+s3:"Ladda ner appen",s3p:"Installera CADstart från Play Butik. Om appen inte syns direkt: vänta 5–15 minuter och försök igen.",s3b:"Öppna i Play Butik",
+keep:"Behåll appen i minst 14 dagar och öppna den någon gång ibland. Det hjälper appen att godkännas av Google.",
+help:"Problem?",
+q:[["”Du har inte behörighet” / ”You don't have permission”","Du är inte inloggad, eller så öppnade du länken i WhatsApp. Öppna sidan i Chrome och logga in med ditt vanliga Google-konto (gmail). Jobb- eller skolkonton fungerar ofta inte – använd ett privat Gmail-konto."],
+["”Appen hittades inte” / ”Item not found”","Gör steg 1 och 2 först, med samma Google-konto som är inloggat i Play Butik. Vänta sedan 5–15 minuter och öppna steg 3 igen."],
+["Jag har flera Google-konton","Play Butik använder kontot som visas när du trycker på din profilbild uppe till höger i Play Butik. Använd samma konto i steg 1 och 2."],
+["Jag har iPhone","Appen finns tyvärr bara för Android just nu. Du kan använda webbversionen: nordicproapps.github.io/app"]],
+thanks:"Tack så mycket! 🙏",priv:"Integritetspolicy"},
+en:{dir:"ltr",title:"Become a CADstart tester",intro:"Thank you for helping! CADstart is a free app that teaches AutoCAD 2D and 3D. It takes about 2 minutes.",
+need:["📱 Android phone","👤 Your Google account (the same as in Play Store)"],
+warn:"You opened this page in WhatsApp (or another app). You are not signed in to Google there, so the steps won't work. Open the page in Chrome first:",warnBtn:"Open in Chrome",
+s1:"Join the test group",s1p:"Sign in with your Google account if asked. Then tap “Join group”.",s1b:"Join the group",
+s2:"Become a tester",s2p:"Tap “Become a tester”. Use the same Google account as in step 1.",s2b:"Become a tester",
+s3:"Download the app",s3p:"Install CADstart from Play Store. If the app doesn't show up right away, wait 5–15 minutes and try again.",s3b:"Open in Play Store",
+keep:"Keep the app for at least 14 days and open it now and then. This helps the app get approved by Google.",
+help:"Problems?",
+q:[["“You don't have permission”","You are not signed in, or you opened the link inside WhatsApp. Open the page in Chrome and sign in with your normal Google account (Gmail). Work or school accounts often don't work – use a personal Gmail account."],
+["“Item not found” / app not found","Do steps 1 and 2 first, with the same Google account that is signed in to Play Store. Then wait 5–15 minutes and open step 3 again."],
+["I have several Google accounts","Play Store uses the account shown when you tap your profile picture at the top right of Play Store. Use that same account in steps 1 and 2."],
+["I have an iPhone","The app is only available for Android right now. You can use the web version: nordicproapps.github.io/app"]],
+thanks:"Thank you so much! 🙏",priv:"Privacy policy"},
+ar:{dir:"rtl",title:"كن مختبِرًا لتطبيق CADstart",intro:"شكرًا لمساعدتك! CADstart تطبيق مجاني يعلّمك أوتوكاد ثنائي وثلاثي الأبعاد. يستغرق الأمر دقيقتين تقريبًا.",
+need:["📱 هاتف أندرويد","👤 حساب Google الخاص بك (نفس الحساب في متجر Play)"],
+warn:"لقد فتحت هذه الصفحة داخل واتساب (أو تطبيق آخر). لست مسجّلًا في Google هناك، لذلك لن تعمل الخطوات. افتح الصفحة في Chrome أولًا:",warnBtn:"افتح في Chrome",
+s1:"انضم إلى مجموعة الاختبار",s1p:"سجّل الدخول بحساب Google إذا طُلب منك ذلك، ثم اضغط على «الانضمام إلى المجموعة» (Join group).",s1b:"انضم إلى المجموعة",
+s2:"كن مختبِرًا",s2p:"اضغط على «كن مختبِرًا» (Become a tester). استخدم نفس حساب Google الذي استخدمته في الخطوة 1.",s2b:"كن مختبِرًا",
+s3:"حمّل التطبيق",s3p:"ثبّت CADstart من متجر Play. إذا لم يظهر التطبيق فورًا، انتظر 5–15 دقيقة وحاول مرة أخرى.",s3b:"افتح في متجر Play",
+keep:"احتفظ بالتطبيق 14 يومًا على الأقل وافتحه من حين لآخر. هذا يساعد على موافقة Google على التطبيق.",
+help:"مشكلة؟",
+q:[["«ليس لديك إذن» / You don't have permission","لست مسجّلًا للدخول، أو فتحت الرابط داخل واتساب. افتح الصفحة في Chrome وسجّل الدخول بحساب Google العادي (Gmail). حسابات العمل أو المدرسة غالبًا لا تعمل – استخدم حساب Gmail شخصي."],
+["«لم يتم العثور على التطبيق» / Item not found","نفّذ الخطوتين 1 و2 أولًا بنفس حساب Google المسجّل في متجر Play، ثم انتظر 5–15 دقيقة وافتح الخطوة 3 مرة أخرى."],
+["لدي أكثر من حساب Google","يستخدم متجر Play الحساب الظاهر عند الضغط على صورة ملفك أعلى الشاشة في المتجر. استخدم نفس الحساب في الخطوتين 1 و2."],
+["لدي iPhone","التطبيق متاح حاليًا لأندرويد فقط. يمكنك استخدام نسخة الويب: nordicproapps.github.io/app"]],
+thanks:"شكرًا جزيلًا! 🙏",priv:"سياسة الخصوصية"}};
+let lang=(()=>{try{const s=localStorage.getItem("cad.testlang");if(s&&T[s])return s}catch(e){}const n=(navigator.language||"sv").slice(0,2);return T[n]?n:"sv"})();
+function render(){
+ const t=T[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.title=t.title+" – CADstart";
+ const here=location.href.split("#")[0];
+ document.getElementById("app").innerHTML=`
+ <header class="top"><div class="langs">${["sv","en","ar"].map(k=>`<button type="button" data-l="${k}" aria-pressed="${k===lang}">${k==="sv"?"🇸🇪 SV":k==="en"?"🇬🇧 EN":"🇸🇦 AR"}</button>`).join("")}</div>
+ <div class="brand"><img src="../icon.png" alt=""><h1>${t.title}</h1></div><p>${t.intro}</p></header>
+ <div class="warn${inApp?" show":""}">${t.warn}<a href="${chrome(here)}">${t.warnBtn}</a></div>
+ <div class="need">${t.need.map(x=>`<span>${x}</span>`).join("")}</div>
+ <ol class="steps">
+  <li class="step"><h2><span class="num">1</span>${t.s1}</h2><p>${t.s1p}</p><a class="btn" href="${chrome(GROUP)}" target="_blank" rel="noopener">${t.s1b}</a></li>
+  <li class="step"><h2><span class="num">2</span>${t.s2}</h2><p>${t.s2p}</p><a class="btn alt" href="${chrome(OPTIN)}" target="_blank" rel="noopener">${t.s2b}</a></li>
+  <li class="step"><h2><span class="num">3</span>${t.s3}</h2><p>${t.s3p}</p><a class="btn ok" href="${STORE}" target="_blank" rel="noopener">${t.s3b}</a><p class="done">${t.keep}</p></li>
+ </ol>
+ <h2 style="font-size:1.1rem;margin:22px 0 4px">${t.help}</h2>
+ ${t.q.map(([a,b])=>`<details><summary>${a}</summary><p>${b}</p></details>`).join("")}
+ <p class="thanks">${t.thanks}</p>
+ <footer>© 2026 Nordicpro Apps · <a href="../privacy.html">${t.priv}</a></footer>`;
+ document.querySelectorAll(".langs button").forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem("cad.testlang",lang)}catch(e){}render();});
+}
+render();
+</script>
+</body>
+</html>
