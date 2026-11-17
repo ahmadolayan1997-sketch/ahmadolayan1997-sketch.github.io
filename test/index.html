@@ -58,11 +58,11 @@ const inApp=/WhatsApp|FBAN|FBAV|FB_IAB|Instagram|Messenger|Line\/|Snapchat|TikTo
 // On Android, open a link straight in Chrome (works even from inside WhatsApp)
 function chrome(u){if(!android)return u;const x=new URL(u);return "intent://"+x.host+x.pathname+x.search+"#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url="+encodeURIComponent(u)+";end";}
 const T={
-sv:{dir:"ltr",title:"Bli testare av CADstart",intro:"Tack för att du hjälper till! CADstart är en gratis app som lär dig AutoCAD 2D och 3D. Det tar ungefär 2 minuter.",
+sv:{dir:"ltr",title:"Bli testare av CADstart",intro:"Tack för att du hjälper till! Bara två knappar – sedan har du appen.",
 need:["📱 Android-telefon","👤 Ditt Google-konto (samma som i Play Butik)"],
 warn:"Du har öppnat sidan i WhatsApp (eller en annan app). Där är du inte inloggad på Google, och då fungerar inte stegen. Öppna sidan i Chrome först:",warnBtn:"Öppna i Chrome",
-s1:"Gå med i testgruppen",s1p:"Logga in med ditt Google-konto om du blir tillfrågad. Tryck sedan på ”Gå med i gruppen” (Join group).",s1b:"Gå med i gruppen",
-s2:"Bli testare",s2p:"Tryck på ”Bli testare” (Become a tester). Använd samma Google-konto som i steg 1.",s2b:"Bli testare",
+s1:"Gå med i testgruppen",s1p:"Tryck på knappen och sedan på ”Gå med i gruppen” (Join group).",s1b:"Gå med i gruppen",
+s2:"Bli testare och ladda ner",s2p:"Tryck på ”Bli testare” (Become a tester) och sedan på ”Ladda ner på Google Play”.",s2b:"Bli testare och ladda ner",
 s3:"Ladda ner appen",s3p:"Installera CADstart från Play Butik. Om appen inte syns direkt: vänta 5–15 minuter och försök igen.",s3b:"Öppna i Play Butik",
 keep:"Behåll appen i minst 14 dagar och öppna den någon gång ibland. Det hjälper appen att godkännas av Google.",
 help:"Problem?",
@@ -71,11 +71,11 @@ q:[["”Du har inte behörighet” / ”You don't have permission”","Du är in
 ["Jag har flera Google-konton","Play Butik använder kontot som visas när du trycker på din profilbild uppe till höger i Play Butik. Använd samma konto i steg 1 och 2."],
 ["Jag har iPhone","Appen finns tyvärr bara för Android just nu. Du kan använda webbversionen: nordicproapps.github.io/app"]],
 thanks:"Tack så mycket! 🙏",priv:"Integritetspolicy"},
-en:{dir:"ltr",title:"Become a CADstart tester",intro:"Thank you for helping! CADstart is a free app that teaches AutoCAD 2D and 3D. It takes about 2 minutes.",
+en:{dir:"ltr",title:"Become a CADstart tester",intro:"Thank you for helping! Just two buttons – then you have the app.",
 need:["📱 Android phone","👤 Your Google account (the same as in Play Store)"],
 warn:"You opened this page in WhatsApp (or another app). You are not signed in to Google there, so the steps won't work. Open the page in Chrome first:",warnBtn:"Open in Chrome",
-s1:"Join the test group",s1p:"Sign in with your Google account if asked. Then tap “Join group”.",s1b:"Join the group",
-s2:"Become a tester",s2p:"Tap “Become a tester”. Use the same Google account as in step 1.",s2b:"Become a tester",
+s1:"Join the test group",s1p:"Tap the button, then tap “Join group”.",s1b:"Join the group",
+s2:"Become a tester and download",s2p:"Tap “Become a tester”, then “Download it on Google Play”.",s2b:"Become a tester and download",
 s3:"Download the app",s3p:"Install CADstart from Play Store. If the app doesn't show up right away, wait 5–15 minutes and try again.",s3b:"Open in Play Store",
 keep:"Keep the app for at least 14 days and open it now and then. This helps the app get approved by Google.",
 help:"Problems?",
@@ -84,11 +84,11 @@ q:[["“You don't have permission”","You are not signed in, or you opened the 
 ["I have several Google accounts","Play Store uses the account shown when you tap your profile picture at the top right of Play Store. Use that same account in steps 1 and 2."],
 ["I have an iPhone","The app is only available for Android right now. You can use the web version: nordicproapps.github.io/app"]],
 thanks:"Thank you so much! 🙏",priv:"Privacy policy"},
-ar:{dir:"rtl",title:"كن مختبِرًا لتطبيق CADstart",intro:"شكرًا لمساعدتك! CADstart تطبيق مجاني يعلّمك أوتوكاد ثنائي وثلاثي الأبعاد. يستغرق الأمر دقيقتين تقريبًا.",
+ar:{dir:"rtl",title:"كن مختبِرًا لتطبيق CADstart",intro:"شكرًا لمساعدتك! زرّان فقط – ثم يصبح التطبيق لديك.",
 need:["📱 هاتف أندرويد","👤 حساب Google الخاص بك (نفس الحساب في متجر Play)"],
 warn:"لقد فتحت هذه الصفحة داخل واتساب (أو تطبيق آخر). لست مسجّلًا في Google هناك، لذلك لن تعمل الخطوات. افتح الصفحة في Chrome أولًا:",warnBtn:"افتح في Chrome",
-s1:"انضم إلى مجموعة الاختبار",s1p:"سجّل الدخول بحساب Google إذا طُلب منك ذلك، ثم اضغط على «الانضمام إلى المجموعة» (Join group).",s1b:"انضم إلى المجموعة",
-s2:"كن مختبِرًا",s2p:"اضغط على «كن مختبِرًا» (Become a tester). استخدم نفس حساب Google الذي استخدمته في الخطوة 1.",s2b:"كن مختبِرًا",
+s1:"انضم إلى مجموعة الاختبار",s1p:"اضغط على الزر ثم على «الانضمام إلى المجموعة» (Join group).",s1b:"انضم إلى المجموعة",
+s2:"كن مختبِرًا وحمّل التطبيق",s2p:"اضغط على «كن مختبِرًا» (Become a tester) ثم «التنزيل من Google Play».",s2b:"كن مختبِرًا وحمّل التطبيق",
 s3:"حمّل التطبيق",s3p:"ثبّت CADstart من متجر Play. إذا لم يظهر التطبيق فورًا، انتظر 5–15 دقيقة وحاول مرة أخرى.",s3b:"افتح في متجر Play",
 keep:"احتفظ بالتطبيق 14 يومًا على الأقل وافتحه من حين لآخر. هذا يساعد على موافقة Google على التطبيق.",
 help:"مشكلة؟",
@@ -105,15 +105,15 @@ function render(){
  <header class="top"><div class="langs">${["sv","en","ar"].map(k=>`<button type="button" data-l="${k}" aria-pressed="${k===lang}">${k==="sv"?"🇸🇪 SV":k==="en"?"🇬🇧 EN":"🇸🇦 AR"}</button>`).join("")}</div>
  <div class="brand"><img src="../icon.png" alt=""><h1>${t.title}</h1></div><p>${t.intro}</p></header>
  <div class="warn${inApp?" show":""}">${t.warn}<a href="${chrome(here)}">${t.warnBtn}</a></div>
- <div class="need">${t.need.map(x=>`<span>${x}</span>`).join("")}</div>
+ <div class="need"><span>${t.need[0]}</span></div>
  <ol class="steps">
   <li class="step"><h2><span class="num">1</span>${t.s1}</h2><p>${t.s1p}</p><a class="btn" href="${chrome(GROUP)}" target="_blank" rel="noopener">${t.s1b}</a></li>
-  <li class="step"><h2><span class="num">2</span>${t.s2}</h2><p>${t.s2p}</p><a class="btn alt" href="${chrome(OPTIN)}" target="_blank" rel="noopener">${t.s2b}</a></li>
-  <li class="step"><h2><span class="num">3</span>${t.s3}</h2><p>${t.s3p}</p><a class="btn ok" href="${STORE}" target="_blank" rel="noopener">${t.s3b}</a><p class="done">${t.keep}</p></li>
+  <li class="step"><h2><span class="num">2</span>${t.s2}</h2><p>${t.s2p}</p><a class="btn ok" href="${chrome(OPTIN)}" target="_blank" rel="noopener">${t.s2b}</a><p class="done">${t.keep}</p></li>
+
  </ol>
  <h2 style="font-size:1.1rem;margin:22px 0 4px">${t.help}</h2>
  ${t.q.map(([a,b])=>`<details><summary>${a}</summary><p>${b}</p></details>`).join("")}
- <p class="thanks">${t.thanks}</p>
+ <p class="thanks"><a href="${STORE}" style="color:inherit">Google Play: CADstart</a><br>${t.thanks}</p>
  <footer>© 2026 Nordicpro Apps · <a href="../privacy.html">${t.priv}</a></footer>`;
  document.querySelectorAll(".langs button").forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem("cad.testlang",lang)}catch(e){}render();});
 }
