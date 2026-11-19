@@ -5801,8 +5801,19 @@ document.addEventListener("visibilitychange",()=>{if(document.visibilityState===
 async function signIn(){
  const f=await fbLoad();
  if(NATIVE){
-  const r=await plug("FirebaseAuthentication").signInWithGoogle();
-  const cred=f.AU.GoogleAuthProvider.credential(r.credential&&r.credential.idToken);
+  // Android: try Google's Credential Manager first. On some phones/accounts it fails
+  // ("[16] Account reauth failed", "activity is cancelled", "no credentials") –
+  // then fall back to the classic Google Sign-In account picker.
+  const FA=plug("FirebaseAuthentication");let r;
+  try{r=await FA.signInWithGoogle({useCredentialManager:true});}
+  catch(e){
+   const m=String((e&&(e.message||e.code))||e);
+   if(!/reauth|\[16\]|cancel|no ?credential|28433|28444|interrupted|unknown|provider/i.test(m))throw e;
+   console.warn("Credential Manager failed, using classic Google Sign-In:",m);
+   r=await FA.signInWithGoogle({useCredentialManager:false});
+  }
+  if(!(r&&r.credential&&r.credential.idToken))throw new Error("no-id-token");
+  const cred=f.AU.GoogleAuthProvider.credential(r.credential.idToken);
   await f.AU.signInWithCredential(f.auth,cred);
  }else{
   await f.AU.signInWithPopup(f.auth,new f.AU.GoogleAuthProvider());
@@ -5844,7 +5855,7 @@ function account(){
  const ba=document.getElementById("acct-ads");if(ba)ba.onclick=async()=>{try{const A=plug("AdMob");await A.requestConsentInfo();await A.showPrivacyOptionsForm();}catch(e){console.warn(e);toast(U("acctErr"));}};
  const br=document.getElementById("acct-rate");if(br)br.onclick=rateOpenStore;
  const msg=t=>{const m=document.getElementById("acct-msg");if(m)m.textContent=t;};
- const bi=document.getElementById("acct-in");if(bi)bi.onclick=async()=>{bi.disabled=true;msg(U("syncing"));try{await signIn();}catch(e){console.warn(e);const d=(e&&(e.code||e.errorMessage||e.message))||String(e);msg(U("acctErr")+" ["+String(d).slice(0,160)+"]");}bi.disabled=false;};
+ const bi=document.getElementById("acct-in");if(bi)bi.onclick=async()=>{bi.disabled=true;msg(U("syncing"));try{await signIn();}catch(e){console.warn(e);if(isCancel(e)){msg("");}else{const d=(e&&(e.code||e.errorMessage||e.message))||String(e);msg(U("acctErr")+" ("+String(d).slice(0,80)+")");}}bi.disabled=false;};
  const bs=document.getElementById("acct-share");if(bs)bs.onclick=()=>{try{plug("Share").share({title:"CADstart",text:U("acctWeb"),url:WEB_URL,dialogTitle:U("shareLink")});}catch(e){}};
  const bo=document.getElementById("acct-out");if(bo)bo.onclick=async()=>{await signOutNow();route();};
  const bd=document.getElementById("acct-del");if(bd)bd.onclick=async()=>{
